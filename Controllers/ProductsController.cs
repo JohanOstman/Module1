@@ -12,15 +12,38 @@ namespace Module1.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        List<Product>_products = new List<Product>()
+        readonly List<Product>_products = new List<Product>()
         {
             new Product(){ProductId = 0, ProductName = "Laptop", ProductPrice = "8000"},
             new Product(){ProductId = 0, ProductName = "SmartPhone", ProductPrice = "5000"},
         };
-
-        public IEnumerable<Product> Get()
+        
+        // GET: api/products
+        [HttpGet]
+        public IEnumerable<Product> GetProducts()
         {
             return _products;
+        }
+
+        // PUT: api/Products/5
+        [HttpPut("{id}")]
+        public void PutProduct([FromRoute] int id, [FromBody] Product product)
+        {
+            _products[id] = product;
+        }
+
+        // POST: api/Products
+        [HttpPost]
+        public void PostProduct([FromBody] Product product)
+        {
+            _products.Add(product);
+        }
+
+        // DELETE: api/Products/5
+        [HttpDelete("{id}")]
+        public void DeleteProduct([FromRoute] int id)
+        {
+            _products.RemoveAt(id);
         }
     }
 }
