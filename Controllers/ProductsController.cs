@@ -12,7 +12,7 @@ namespace Module1.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        readonly List<Product>_products = new List<Product>()
+        List<Product>_products = new List<Product>()
         {
             new Product(){ProductId = 0, ProductName = "Laptop", ProductPrice = "8000"},
             new Product(){ProductId = 0, ProductName = "SmartPhone", ProductPrice = "5000"},
